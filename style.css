@@ -1,0 +1,98 @@
+@font-face{
+  font-family:Merriweather;
+  src:url(assets/merriweather_regular.ttf);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Merriweather;
+  background:#1b1a18;
+  color:#1a1a1a;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.header{
+  background:#2b2722;
+  border-bottom:2px solid #4a3f2a;
+}
+
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.title{
+  padding: 0;
+  margin:0;
+  color:#d6c8a2;
+  font-size:26px;
+  letter-spacing:1px;
+}
+
+.nav{
+  display:flex;
+  gap:10px;
+}
+
+.nav-btn{
+  padding:6px 12px;
+  font-family:Merriweather;
+  background:#3a3328;
+  color:#e5d7b0;
+  border:1px solid #5c4d34;
+  cursor:pointer;
+}
+
+.nav-btn:hover{
+  background:#4b3f2e;
+}
+
+.section{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.section-title{
+  margin-bottom: 0;
+  color:#d6c8a2;
+  font-weight:400;
+}
+
+.game-card{
+  display:flex;
+  gap:12px;
+  padding:12px;
+  background:#e8dcc2;
+  border:2px solid #c2b28d;
+}
+
+.game-icon{
+  display:block;
+  border:1px solid #8e7c5a;
+}
+
+.game-content{
+  flex:1;
+}
+
+.game-title{
+  margin:0;
+  font-size:20px;
+}
+
+.game-desc{
+  margin:6px 0 0;
+  font-size:14px;
+  line-height:1.45;
+  text-align:justify;
+}
