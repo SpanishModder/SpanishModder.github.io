@@ -59,16 +59,35 @@ document.querySelectorAll('.skill-category').forEach(cat => {
 });
 
 /* ── FORM HANDLER ─────────────────────────── */
-function handleSubmit(e) {
-	e.preventDefault();
-	const status = document.getElementById('form-status');
-	status.style.color = 'var(--yellow)';
-	status.textContent = 'Sending...';
-	setTimeout(() => {
-		status.style.color = 'var(--green)';
-		status.textContent = '> Message Sended! Thank you!';
-		e.target.reset();
-	}, 1200);
+async function handleSubmit(e) {
+  e.preventDefault();
+  const status = document.getElementById('form-status');
+  const form = e.target;
+
+  status.style.color = 'var(--yellow)';
+  status.textContent = '> Sending...';
+
+  const formData = new FormData(form);
+  formData.append('access_key', '70d798a1-25d9-4b31-9ab1-183e0412d3fd');
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      status.style.color = 'var(--green)';
+      status.textContent = '> Message sent. Thanks!';
+      form.reset();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (err) {
+    status.style.color = 'var(--red)';
+    status.textContent = '> Something went wrong. Try again.';
+    console.error(err);
+  }
 }
 
 /* ── ACTIVE NAV LINK ──────────────────────── */
