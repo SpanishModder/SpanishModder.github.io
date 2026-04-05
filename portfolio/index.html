@@ -324,22 +324,28 @@
       </div>
 
       <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="access_key" value="70d798a1-25d9-4b31-9ab1-183e0412d3fd">
+        <input type="hidden" name="subject" value="New Portfolio Message">
         <div class="form-group">
           <label>NAME <span class="req">*</span></label>
-          <input type="text" placeholder="Your full name" required />
+          <input type="text" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label>EMAIL <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="your@email.com" required />
         </div>
         <div class="form-group">
           <label>SUBJECT</label>
-          <input type="text" placeholder="Project proposal, question..." />
+          <input type="text" name="custom_subject" placeholder="Project proposal, question..." />
         </div>
         <div class="form-group">
           <label>MESSAGE <span class="req">*</span></label>
-          <textarea placeholder="Tell me about your project or idea..." required></textarea>
+          <textarea name="message" placeholder="Tell me about your project or idea..." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">
           Send message
         </button>
-        <p id="form-status" style="font-family:var(--font-px);font-size:8px;color:var(--green);min-height:20px;"></p>
+        <p id="form-status"></p>
       </form>
     </div>
   </section>
