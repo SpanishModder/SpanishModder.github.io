@@ -4,244 +4,163 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bru.dev — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       NAV
-  ════════════════════════════════════════════ -->
   <nav>
-    <a href="#hero" class="nav-logo">[ <span>DEV</span> ]</a>
+    <a href="#hero" class="nav-logo">bru.dev</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#contact">contact</a></li>
     </ul>
   </nav>
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ════════════════════════════════════════════ -->
+  <!-- HERO -->
   <section id="hero">
-    <!-- floating pixel decorations -->
-    <div class="hero-pixel-deco"></div>
-    <div class="hero-pixel-deco"></div>
-    <div class="hero-pixel-deco"></div>
-    <div class="hero-pixel-deco"></div>
-    <div class="hero-pixel-deco"></div>
-    <div class="hero-pixel-deco"></div>
-
-    <p class="hero-tag">Videogame Developer</p>
-
-    <h1 class="hero-name">
-      Hi! I'm<br />
-      <span class="highlight">Bru.dev</span>
-    </h1>
-
-    <p class="hero-role">
-      <span id="typewriter"></span><span class="cursor"></span>
-    </p>
-
-    <p class="hero-desc">
-      A developer passionate about creating unique digital experiences.
-      From pixel to product, every line of code counts.
-    </p>
-
+    <p class="hero-tag">// videogame developer</p>
+    <h1 class="hero-name">Hi, I'm<br/><span class="highlight">Bru.dev</span></h1>
+    <p class="hero-role"><span id="typewriter"></span><span class="cursor"></span></p>
+    <p class="hero-desc">A developer passionate about creating unique digital experiences.<br>From pixel to product, every line of code counts.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">See Projects</a>
-      <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      <a href="#projects" class="btn btn-primary">→ see projects</a>
+      <a href="#contact" class="btn btn-secondary">→ contact me</a>
     </div>
-
-    <div class="scroll-hint">
-      <span>SCROLL</span>
-      <div class="scroll-arrow"></div>
-    </div>
+    <div class="scroll-hint">↓ scroll</div>
   </section>
 
   <hr class="section-divider" />
 
-  <!-- ═══════════════════════════════════════════
-       ABOUT
-  ════════════════════════════════════════════ -->
+  <!-- ABOUT -->
   <section id="about">
-    <div class="section-title reveal">
-      <span class="num">01.</span> About me
-    </div>
+    <div class="section-title reveal"><span class="num">01.</span> about me</div>
     <div class="section-line reveal"></div>
-
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>
-          I'm <strong>Bru.dev</strong>, a developer specialised
-					in building games in Roblox and Love2D, creating memorable
-					user experiences.
-        </p>
-        <p>
-          I'm passionate about blending <strong>design and functionality</strong> to
-          craft products that truly matter. Always learning, always building.
-        </p>
-        <p>
-          When I'm not coding, you'll find me <em>making pixel art</em>,
-					playing indie games or diving into new technologies.
-        </p>
-        <!--<a href="#" class="btn btn-secondary" style="margin-top:16px">
-          Download CV
-        </a> -->
+        <p>I'm <strong>Bru.dev</strong>, a developer specialised in building games in Roblox and Love2D, creating memorable user experiences.</p>
+        <p>I'm passionate about blending <strong>design and functionality</strong> to craft products that truly matter. Always learning, always building.</p>
+        <p>When I'm not coding, you'll find me <em>making pixel art</em>, playing indie games or diving into new technologies.</p>
       </div>
       <div class="about-avatar reveal">
-        <!-- Replace with your actual photo -->
-        <img width="350px" src="assets/face.png" alt="face generated with my lua face generator">
+        <img src="assets/face.png" alt="face generated with my lua face generator">
+      </div>
     </div>
   </section>
 
   <hr class="section-divider" />
 
-  <!-- ═══════════════════════════════════════════
-       SKILLS
-  ════════════════════════════════════════════ -->
+  <!-- SKILLS -->
   <div id="skills">
     <div class="skills-inner">
-      <div class="section-title reveal">
-        <span class="num">02.</span> Skills
-      </div>
+      <div class="section-title reveal"><span class="num">02.</span> skills</div>
       <div class="section-line reveal"></div>
-
       <div class="skills-grid">
-        <!-- Frontend -->
+
         <div class="skill-category reveal">
-          <h3 class="skill-cat-title">Frontend</h3>
+          <h3 class="skill-cat-title">frontend</h3>
           <div class="skill-item">
             <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
             <div class="skill-bar"><div class="skill-fill cyan" data-width="85" style="width:0%"></div></div>
           </div>
         </div>
 
-        <!-- Backend -->
         <div class="skill-category reveal">
-          <h3 class="skill-cat-title">Backend</h3>
+          <h3 class="skill-cat-title">backend</h3>
           <div class="skill-item">
-            <div class="skill-label"><span>Lua (+3 years of experience)</span><span>95%</span></div>
+            <div class="skill-label"><span>Lua (+3 years)</span><span>95%</span></div>
             <div class="skill-bar"><div class="skill-fill blue" data-width="95" style="width:0%"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-label"><span>Python</span><span>70%</span></div>
-            <div class="skill-bar"><div class="skill-fill green" data-width="70" style="width:0%"></div></div>
+            <div class="skill-bar"><div class="skill-fill blue" data-width="70" style="width:0%"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-label"><span>C#</span><span>55%</span></div>
-            <div class="skill-bar"><div class="skill-fill green" data-width="55" style="width:0%"></div></div>
+            <div class="skill-bar"><div class="skill-fill blue" data-width="55" style="width:0%"></div></div>
           </div>
         </div>
 
-        <!-- Tools -->
         <div class="skill-category reveal">
-          <h3 class="skill-cat-title">Tools</h3>
+          <h3 class="skill-cat-title">tools</h3>
           <div class="skill-item">
             <div class="skill-label"><span>Git / GitHub</span><span>90%</span></div>
-            <div class="skill-bar"><div class="skill-fill orange" data-width="90" style="width:0%"></div></div>
+            <div class="skill-bar"><div class="skill-fill accent" data-width="90" style="width:0%"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-label"><span>Aseprite</span><span>70%</span></div>
-            <div class="skill-bar"><div class="skill-fill orange" data-width="70" style="width:0%"></div></div>
+            <div class="skill-bar"><div class="skill-fill accent" data-width="70" style="width:0%"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-label"><span>Photoshop</span><span>85%</span></div>
-            <div class="skill-bar"><div class="skill-fill orange" data-width="85" style="width:0%"></div></div>
+            <div class="skill-bar"><div class="skill-fill accent" data-width="85" style="width:0%"></div></div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
   <hr class="section-divider" />
 
-  <!-- ═══════════════════════════════════════════
-       PROJECTS
-  ════════════════════════════════════════════ -->
+  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-title reveal">
-      <span class="num">03.</span> Projects
-    </div>
+    <div class="section-title reveal"><span class="num">03.</span> projects</div>
     <div class="section-line reveal"></div>
-
     <div class="projects-grid">
 
-      <!-- Featured Project -->
       <div class="project-card featured reveal">
-        <div class="project-shadow"></div>
         <div class="project-thumb">
-          <div class="project-thumb-inner">
-            <div class="thumb-grid"></div>
-            <img width="150px" src="assets/booth.png" alt="">
-          </div>
+          <img id = "wotm_thumb" src="assets/booth.png" alt="The Weight of the Mark">
           <span class="project-num">#001</span>
         </div>
         <div class="project-body">
-          <span class="featured-badge">★ FEATURED</span>
+          <span class="featured-badge">★ featured</span>
           <h3 class="project-title">The Weight of the Mark</h3>
-          <p class="project-desc">
-            A game about the 1930s in germany during hyperinflation. The idea still in progress but the game will be released on Steam
-            next year. Heavely inspired in Papers, Please and developed in Love2D framework.
-          </p>
+          <p class="project-desc">A game set in 1930s Germany during hyperinflation. Still in progress, planned for Steam. Heavily inspired by Papers, Please and developed in Love2D.</p>
           <div class="project-tags">
             <span class="tag">Lua</span>
+            <span class="tag">Love2D</span>
           </div>
         </div>
       </div>
 
-      <!-- Project 2 -->
       <div class="project-card reveal">
-        <div class="project-shadow"></div>
         <div class="project-thumb">
-          <div class="project-thumb-inner">
-            <div class="thumb-grid"></div>
-            <img width="100%" height="100%" src="https://media.moddb.com/cache/images/mods/1/55/54434/thumb_620x2000/Borrar1_2.1.png" alt="">
-          </div>
+          <img src="https://media.moddb.com/cache/images/mods/1/55/54434/thumb_620x2000/Borrar1_2.1.png" alt="Greater Project Mod">
           <span class="project-num">#002</span>
         </div>
         <div class="project-body">
           <h3 class="project-title">Greater Project Mod</h3>
-          <p class="project-desc">
-            A mod for Victoria II: Hearts of Darkness, a grand strategy game I loved for a time and made a mod for it coded in LUA.
-            It expands the main game's mechanics and features and it adds tons of QoL improvements.
-          </p>
+          <p class="project-desc">A mod for Victoria II: Hearts of Darkness. Expands mechanics and adds QoL improvements coded in Lua.</p>
           <div class="project-tags">
-            <span class="tag">LUA</span>
+            <span class="tag">Lua</span>
+            <span class="tag">Modding</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/SpanishModder/Greater-Project-Mod" class="project-link">Live demo</a>
-            <a href="https://www.moddb.com/mods/greater-proyect-mod" class="project-link">GitHub</a>
+            <a href="https://github.com/SpanishModder/Greater-Project-Mod" class="project-link">→ github</a>
+            <a href="https://www.moddb.com/mods/greater-proyect-mod" class="project-link">→ moddb</a>
           </div>
         </div>
       </div>
 
-      <!-- Project 3 -->
       <div class="project-card reveal">
-        <div class="project-shadow"></div>
         <div class="project-thumb">
-          <div class="project-thumb-inner">
-            <div class="thumb-grid"></div>
-             <img width="100%" height="100%" src="assets/black_flag.png" alt="">
-          </div>
+          <img id = "bfg_thumb" src="assets/black_flag.png" alt="Black Flag Games">
           <span class="project-num">#003</span>
         </div>
         <div class="project-body">
           <h3 class="project-title">Black Flag Games</h3>
-          <p class="project-desc">
-            A website to upload and download your favourite games! Still in development but the page is active on internet and you can
-            download 4 games currently.
-          </p>
+          <p class="project-desc">A website to upload and download games. Live and hosting 4 games currently available for download.</p>
           <div class="project-tags">
             <span class="tag">HTML</span>
             <span class="tag">CSS</span>
             <span class="tag">JS</span>
           </div>
           <div class="project-links">
-            <a href="https://spanishmodder.github.io/black_flag_games" class="project-link">Live demo</a>
+            <a href="https://spanishmodder.github.io/black_flag_games" class="project-link">→ live demo</a>
           </div>
         </div>
       </div>
@@ -251,74 +170,55 @@
 
   <hr class="section-divider" />
 
-  <!-- ═══════════════════════════════════════════
-       EXPERIENCE
-  ════════════════════════════════════════════ -->
+  <!-- EXPERIENCE -->
   <div id="experience">
     <div class="exp-inner">
-      <div class="section-title reveal">
-        <span class="num">04.</span> Experience
-      </div>
+      <div class="section-title reveal"><span class="num">04.</span> experience</div>
       <div class="section-line reveal"></div>
-
       <div class="timeline">
+
         <div class="timeline-item reveal">
-          <div class="timeline-date">2025 — PRESENT</div>
+          <div class="timeline-date">2025 — present</div>
           <div class="timeline-role">Love2D developer</div>
           <div class="timeline-company">Bru.dev</div>
-          <div class="timeline-desc">
-            Since my roblox game called "Maladro" was taken down by the platform several times, I decided to take a diferent path
-            and develop games on the mentioned framework. I tested a lot of things and learned so much about coding since then.
-          </div>
+          <div class="timeline-desc">After my Roblox game "Maladro" was taken down repeatedly, I shifted to Love2D. Extensive experimentation and significant growth in coding since then.</div>
         </div>
+
         <div class="timeline-item reveal">
           <div class="timeline-date">2022 — 2024</div>
           <div class="timeline-role">Roblox game developer</div>
           <div class="timeline-company">The Baron Studios</div>
-          <div class="timeline-desc">
-            In this period I developed several games on the Roblox platform of diferent genres like card games, simulators and incrementals.
-            Some of them still public at the moment and others like Maladro were taken down because some issues with moderators.
-          </div>
+          <div class="timeline-desc">Developed several Roblox games — card games, simulators, and incrementals. Some are still live; others including Maladro were removed by moderation.</div>
         </div>
+
         <div class="timeline-item reveal">
           <div class="timeline-date">2021 — 2022</div>
           <div class="timeline-role">Modder</div>
           <div class="timeline-company">SpanishModder</div>
-          <div class="timeline-desc">
-            In this period I created the mod mentioned in <a href="#projects">Projects</a> section. It was a greatful experience because I
-            introduced myself in the coding community and started learning the coding lenguages I know today.
-          </div>
+          <div class="timeline-desc">Created the mod in the Projects section. My first real step into the coding community and the foundation of everything I know today.</div>
         </div>
+
       </div>
     </div>
   </div>
 
   <hr class="section-divider" />
 
-  <!-- ═══════════════════════════════════════════
-       CONTACT
-  ════════════════════════════════════════════ -->
+  <!-- CONTACT -->
   <section id="contact">
-    <div class="section-title reveal">
-      <span class="num">05.</span> Contact
-    </div>
+    <div class="section-title reveal"><span class="num">05.</span> contact</div>
     <div class="section-line reveal"></div>
-
     <div class="contact-grid">
+
       <div class="contact-info reveal">
-        <h3>Let's talk!</h3>
-        <p>
-          Got a project in mind or just want to say hi?
-          My inbox is always open.
-        </p>
+        <h3>let's talk</h3>
+        <p>Got a project in mind or just want to say hi? My inbox is always open.</p>
         <div class="contact-links">
           <a href="https://discordapp.com/users/1339630871157932125" target="_blank" class="contact-link">
-            <span class="contact-link-icon">DISCORD</span>
-            @bru.dev.
+            <span class="contact-link-icon">discord</span>@bru.dev.
           </a>
-          <a href="https://github.com/spanishmodder" class="contact-link" target="_blank">
-            <span class="contact-link-icon">GITHUB</span>
-            github.com/spanishmodder
+          <a href="https://github.com/spanishmodder" target="_blank" class="contact-link">
+            <span class="contact-link-icon">github</span>github.com/spanishmodder
           </a>
         </div>
       </div>
@@ -326,48 +226,32 @@
       <form class="contact-form reveal" onsubmit="handleSubmit(event)">
         <input type="hidden" name="access_key" value="70d798a1-25d9-4b31-9ab1-183e0412d3fd">
         <div class="form-group">
-          <label>NAME <span class="req">*</span></label>
-          <input type="text" name="name" placeholder="Your full name" required />
+          <label>name <span class="req">*</span></label>
+          <input type="text" name="name" placeholder="your full name" required />
         </div>
         <div class="form-group">
-          <label>EMAIL <span class="req">*</span></label>
+          <label>email <span class="req">*</span></label>
           <input type="email" name="email" placeholder="your@email.com" required />
         </div>
         <div class="form-group">
-          <label>SUBJECT <span class="req">*</span></label>
-          <input type="text" name="subject" placeholder="Project proposal, question..." required/>
+          <label>subject <span class="req">*</span></label>
+          <input type="text" name="subject" placeholder="project proposal, question..." required/>
         </div>
         <div class="form-group">
-          <label>MESSAGE <span class="req">*</span></label>
-          <textarea name="message" placeholder="Tell me about your project or idea..." required></textarea>
+          <label>message <span class="req">*</span></label>
+          <textarea name="message" placeholder="tell me about your project or idea..." required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">
-          Send message
-        </button>
+        <button type="submit" class="btn btn-primary">→ send message</button>
         <p id="form-status"></p>
       </form>
+
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════ -->
   <footer>
-    <p class="footer-copy">
-      © 2025 <span>Bru.dev</span> — Made with ♥ and pixels
-    </p>
-    <div class="footer-palette" title="Europa-16 palette by Lospec">
-      <div class="pal-swatch" style="background:#ffffff"></div>
-      <div class="pal-swatch" style="background:#75ceea"></div>
-      <div class="pal-swatch" style="background:#317ad7"></div>
-      <div class="pal-swatch" style="background:#283785"></div>
-      <div class="pal-swatch" style="background:#ecf860"></div>
-      <div class="pal-swatch" style="background:#94d446"></div>
-      <div class="pal-swatch" style="background:#dc7d5e"></div>
-      <div class="pal-swatch" style="background:#1a1b35"></div>
-    </div>
+    <p class="footer-copy">© 2025 <span>bru.dev</span></p>
     <div class="footer-socials">
-      <a href="https://github.com/spanishmodder" class="footer-social" target="_blank">GH</a>
+      <a href="https://github.com/spanishmodder" class="footer-social" target="_blank">github</a>
     </div>
   </footer>
 
