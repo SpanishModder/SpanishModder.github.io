@@ -33,7 +33,8 @@ const HeightmapModule = (() => {
 
         const { resolution, scale, invert, blur } = options;
 
-        const url = `https://opentopography.org/api/otraster?demtype=SRTMGL1&south=${bounds.south}&north=${bounds.north}&west=${bounds.west}&east=${bounds.east}&outputFormat=PNG&api_key=${activeToken}`;
+        const baseUrl = `https://opentopography.org/api/otraster?demtype=SRTMGL1&south=${bounds.south}&north=${bounds.north}&west=${bounds.west}&east=${bounds.east}&outputFormat=PNG&api_key=${activeToken}`;
+        const url = `https://corsproxy.io/?${encodeURIComponent(baseUrl)}`;
 
         if (onProgress) onProgress(20);
 
@@ -107,7 +108,8 @@ const HeightmapModule = (() => {
 
         for (let x = xMin; x <= xMax; x++) {
             for (let y = yMin; y <= yMax; y++) {
-                const url = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${zoom}/${x}/${y}.pngraw?access_token=${activeToken}`;
+                const baseUrl = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${zoom}/${x}/${y}.pngraw?access_token=${activeToken}`;
+                const url = `https://corsproxy.io/?${encodeURIComponent(baseUrl)}`;
                 const tile = await fetchTile(url);
                 processTileIntoBuffer(tile, x, y, xMin, yMin, xMax, yMax, resolution, bounds, elevationData);
                 tilesProcessed++;
