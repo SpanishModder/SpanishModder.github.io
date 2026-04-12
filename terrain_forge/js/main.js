@@ -9,11 +9,6 @@ const App = (() => {
         UIModule.init(handleGenerate);
         Preview3DModule.init();
 
-        // Detect if running from file://
-        if (window.location.protocol === 'file:') {
-            document.getElementById('cors-warning').classList.remove('hidden');
-        }
-
         // Load saved token
         const savedToken = localStorage.getItem('api_token');
         const savedProvider = localStorage.getItem('api_provider') || 'opentopo';

@@ -81,7 +81,7 @@ const HeightmapModule = (() => {
 
         } catch (error) {
             if (error.message === 'Failed to fetch') {
-                throw new Error("Error de Red/CORS: El navegador ha bloqueado la petición. Asegúrate de ejecutar la web desde un servidor local (http://) y no abriendo el archivo directamente (file://).");
+                throw new Error("Error de Red: No se pudo conectar con el servidor de datos. Por favor, verifica tu conexión a internet.");
             }
             throw error;
         }
