@@ -5,6 +5,11 @@
 
 *{box-sizing:border-box}
 
+a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
 body{
   margin:0;
   font-family:Merriweather;
@@ -79,6 +84,10 @@ body{
 .game-icon{
   display:block;
   border:1px solid #8e7c5a;
+}
+
+.game-icon:hover {
+  border-width: 2px;
 }
 
 .game-content{
