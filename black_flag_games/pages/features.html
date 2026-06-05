@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Black Flag Games</title>
+    <meta name="description" content="Learn more about Black Flag Games and the archive's mission.">
+    <meta name="author" content="Black Flag Games">
+    <meta name="theme-color" content="#17150f">
+
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../assets/icon.png">
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav id="navbar">
+    <a href="../index.html#home" class="nav-brand">
+        <img src="../assets/icon.png" alt="Black Flag Games">
+        <span class="nav-brand-name">Black Flag Games</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#library">Library</a></li>
+        <li><a href="../index.html#features">Features</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+    <a href="../index.html#home" onclick="closeMobile()">Home</a>
+    <a href="../index.html#library" onclick="closeMobile()">Library</a>
+    <a href="../index.html#features" onclick="closeMobile()">Features</a>
+</div>
+
+<div class="section-wrap">
+    <div class="section-header reveal">
+        <h2 class="section-title"><span class="deco">✦</span>What We Offer<span class="deco">✦</span></h2>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card reveal">
+            <span class="feature-icon">⚓</span>
+            <h3 class="feature-title">Curated Library</h3>
+            <p class="feature-desc">Hand-picked titles chosen for their quality, replayability and lasting impact.</p>
+        </div>
+
+        <div class="feature-card reveal">
+            <span class="feature-icon">🗺</span>
+            <h3 class="feature-title">One-Click Access</h3>
+            <p class="feature-desc">No accounts, no clutter. Every title is one click away from your hands.</p>
+        </div>
+
+        <div class="feature-card reveal">
+            <span class="feature-icon">⚔</span>
+            <h3 class="feature-title">All Genres</h3>
+            <p class="feature-desc">From strategy and simulation to roguelikes, there is something for every sailor.</p>
+        </div>
+
+        <div class="feature-card reveal">
+            <span class="feature-icon">🌊</span>
+            <h3 class="feature-title">Always Growing</h3>
+            <p class="feature-desc">New titles are added to the hold regularly. The fleet is always expanding.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <span class="footer-brand">☠ Black Flag Games</span>
+    <span class="footer-copy">A curated archive with a sharper identity</span>
+</footer>
+
+<div id="toast"></div>
+<button id="back-top" title="Back to top" aria-label="Back to top">↑</button>
+
+<script src="../main.js"></script>
+</body>
+</html>
