@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Online Height Map Generator | Relievo</title>
+<meta name="description" content="Search for any place in the world, select an area on the map, and download its real height map as a PNG. Instant preview, no sign-up or installation required.">
+<link rel="canonical" href="https://spanishmodder.github.io/relievo/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Relievo — Free Online Height Map Generator">
+<meta property="og:description" content="Select an area on the map and download its real height map as a PNG, with an instant preview.">
+<meta property="og:image" content="https://spanishmodder.github.io/relievo/assets/img/og-image.png">
+<meta property="og:url" content="https://spanishmodder.github.io/relievo/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<link rel="preconnect" href="https://tile.openstreetmap.org">
+<link rel="preconnect" href="https://s3.amazonaws.com">
+
+<link rel="stylesheet" href="styles.css?v=20260819">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Relievo",
+  "description": "Generate real height maps from open elevation data. Select an area on an interactive map and download the result as a PNG.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any (web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Where does the elevation data come from?","acceptedAnswer":{"@type":"Answer","text":"From an open dataset (SRTM, 3DEP, and GMTED, combined and served as tiles by AWS Open Data) covering the entire planet. The actual resolution varies by location."}},
+    {"@type":"Question","name":"How large can the area I select be?","acceptedAnswer":{"@type":"Answer","text":"As large as you want, but the larger the area, the less detail the result will have, because Relievo distributes a limited number of tiles across the selected area."}},
+    {"@type":"Question","name":"Can I use the PNG with Unity, Unreal, or World Machine?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is an 8-bit grayscale PNG, the standard format accepted by most game engines and terrain generators."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="/">
+    <svg class="brand-mark" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M3 20L10 7l4 6 3-4 6 11" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Relievo
+  </a>
+  <span class="header-tag">real elevation data · free</span>
+</header>
+
+<main id="main">
+  <div class="container">
+    <section class="hero">
+      <p class="hero-eyebrow">height map generator</p>
+      <h1 id="heroTitle">Turn anywhere in the world into a height map</h1>
+      <p class="lede" id="heroLede">Search for a place or browse the map, draw the area you are interested in, and see the height map generated instantly. When you like the result, download it as a PNG.</p>
+    </section>
+
+    <section class="tool-card" id="toolCard" data-state="idle" aria-label="Height map generator">
+      <div class="tool-panels">
+
+        <!-- MAP PANEL -->
+        <div class="map-panel">
+          <div class="map-toolbar">
+            <div class="search-box">
+              <form id="searchForm" role="search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="searchInput" type="text" placeholder="Search for a city, valley, mountain…" autocomplete="off" aria-label="Search for a place">
+                <button class="go" type="submit" aria-label="Search">Go</button>
+              </form>
+              <ul class="search-results" id="searchResults" hidden></ul>
+            </div>
+            <button class="icon-btn" id="geoLocateBtn" type="button" aria-label="Go a mi ubicación" title="Go a mi ubicación">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            </button>
+            <button class="select-btn" id="selectModeBtn" type="button" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="3 3"/></svg>
+              Select area
+            </button>
+          </div>
+
+          <div class="map-stage">
+            <div id="map" role="application" aria-label="Interactive map for selecting the height map area">
+              <div id="mapTiles"></div>
+              <div class="map-selection" id="mapSelection" hidden></div>
+            </div>
+            <p class="map-hint" id="mapHint" hidden>Drag on the map to draw the area</p>
+            <div class="map-zoom">
+              <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+              <button type="button" id="zoomOut" aria-label="Zoom out">–</button>
+            </div>
+            <div class="map-scale" aria-hidden="true">
+              <div class="map-scale-bar" id="scaleBar"></div>
+              <span id="scaleLabel"></span>
+            </div>
+            <p class="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</p>
+          </div>
+        </div>
+
+        <div class="ruler" aria-hidden="true"><span class="ruler-label">heightmap ↑</span></div>
+
+        <!-- PREVIEW PANEL -->
+        <div class="preview-panel">
+          <div class="preview-header">
+            <h2>Live preview</h2>
+            <button type="button" class="badge" id="clearSelectionBtn" style="cursor:pointer">New selection</button>
+          </div>
+
+          <div class="preview-stage">
+            <div class="stage-msg" data-when="idle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 20 9 8l4 6 3-4 5 10"/></svg>
+              <strong>No area selected yet</strong>
+              Click «Select area» and drag over the map. The heightmap will be created instantly.
+            </div>
+
+            <div class="progress-wrap" data-when="loading">
+              <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+              <p class="progress-label" id="progressLabel">Downloading elevation data</p>
+            </div>
+
+            <div class="error-msg" data-when="error">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+              <strong>Could not load elevation data</strong>
+              <p>There may be a temporary connection issue with the open data provider. Please try again.</p>
+              <button class="retry-btn" id="retryBtn" type="button">Retry</button>
+            </div>
+
+            <canvas id="previewCanvas" data-when="done" aria-label="Preview of the generated height map"></canvas>
+          </div>
+
+          <p class="data-warning" id="dataWarning" hidden></p>
+
+          <dl class="stats-grid" data-when="done">
+            <div class="stat"><dt>Resolution</dt><dd id="statResolution">—</dd></div>
+            <div class="stat"><dt>Actual range</dt><dd id="statRealRange">—</dd></div>
+            <div class="stat"><dt>Data source</dt><dd id="statSource">—</dd></div>
+            <p class="coarse-hint" id="coarseHint" hidden>Large area: less detail. Zoom in on the map and select a smaller area for greater accuracy.</p>
+          </dl>
+
+          <div class="controls">
+            <div class="field">
+              <label for="resolution">Resolution (size)</label>
+              <select id="resolution">
+                <option value="256">256 px</option>
+                <option value="512" selected>512 px</option>
+                <option value="1024">1024 px</option>
+                <option value="2048">2048 px</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="minAlt">Minimum height (m)</label>
+              <input type="number" id="minAlt" step="1" disabled>
+            </div>
+            <div class="field">
+              <label for="maxAlt">Maximum height (m)</label>
+              <input type="number" id="maxAlt" step="1" disabled>
+            </div>
+          </div>
+
+          <div id="config-data" class="field">
+            <div class="field checkbox-field" style="width: fit-content;">
+              <input type="checkbox" id="autoRange" checked>
+              <label for="autoRange">Automatic range (based on actual data)</label>
+            </div>
+            <div class="field checkbox-field" style="width: fit-content;">
+              <input type="checkbox" id="invert">
+              <label for="invert">Invert (white = minimum)</label>
+            </div>
+          </div>
+
+          <div class="download-bar">
+            <button class="download-btn" id="downloadBtn" type="button" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v13m0 0-4-4m4 4 4-4M4 20h16"/></svg>
+              Download PNG
+            </button>
+            <p class="privacy-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3 7.5 8 9 5-1.5 8-4.5 8-9V6l-8-3Z"/></svg>
+              The height map is generated in your browser — it is not uploaded to any server.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot" aria-hidden="true">
+      <script>
+        atOptions = {
+          'key' : '58aeeb7b6df470911847a4898053672a',
+          'format' : 'iframe',
+          'height' : 90,
+          'width' : 728,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/58aeeb7b6df470911847a4898053672a/invoke.js"></script>
+    </div>
+
+    <section class="section" id="como-funciona">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Search or browse</h3>
+          <p>Enter a place in the search box or browse and zoom in on the map until you find the area you are interested in.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>Draw the area</h3>
+          <p>Click «Select area» and drag over the map. As soon as you release, Relievo starts downloading and processing the actual elevation data for that area.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Adjust and download</h3>
+          <p>Change the resolution or height range and watch the preview update instantly. When you are happy with it, download the PNG.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section seo-copy">
+      <h2>Height maps from real elevation data</h2>
+      <p>A <strong>height map</strong> is a grayscale image where each pixel represents an elevation: black marks the lowest point in the area and white the highest. Game engines such as Unity and Unreal Engine, and terrain generation tools such as World Machine or Gaea, use it as input to build 3D terrain meshes.</p>
+      <p>Relievo generates these maps from <strong>real elevation data</strong> for any point on the planet, combining different open topographic data sources. This means the height map you download is not procedural noise: it represents the mountains, valleys, and coastlines that actually exist in the location you selected.</p>
+      <p>All processing — from decoding the elevation tiles to rendering the preview — takes place in your browser. There is no need to create an account or install anything, and your selections are not stored on any server.</p>
+    </section>
+
+    <div class="ad-slot" aria-hidden="true">
+      <script>
+        atOptions = {
+          'key' : '58aeeb7b6df470911847a4898053672a',
+          'format' : 'iframe',
+          'height' : 90,
+          'width' : 728,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/58aeeb7b6df470911847a4898053672a/invoke.js"></script>
+    </div>
+
+    <section class="section" id="faq">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list" data-faq></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© <span id="year">2026</span> Relievo</span>
+    <nav class="footer-links">
+      <a href="privacidad.html">Privacy</a>
+      <a href="aviso-legal.html">Legal Notice</a>
+    </nav>
+  </div>
+</footer>
+
+<script defer src="lib/manifest.js"></script>
+<script defer src="main.js?v=20260819"></script>
+</body>
+</html>
