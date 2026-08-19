@@ -399,10 +399,26 @@ img {
   z-index: 1;
 }
 
+#library {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ad-sidebar {
+  top: 0px;
+  position: sticky;
+  background-color: white;
+  max-width: 162px;
+  max-height: 602px;
+  margin: 5px;
+  border: 1px solid var(--border-lt);
+}
+
 .section-wrap {
   max-width: 1080px;
   margin: 0 auto;
-  padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px);
+  padding: clamp(20px, 6vw, 40px) clamp(20px, 4vw, 40px);
   position: relative;
   z-index: 1;
 }
@@ -514,7 +530,7 @@ img {
 
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 20px;
 }
 
@@ -843,6 +859,9 @@ footer {
 }
 
 @media (max-width: 640px) {
+  .ad-sidebar {
+    display: none;
+  }
   .nav-links {
     display: none;
   }
