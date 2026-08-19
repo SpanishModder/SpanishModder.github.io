@@ -399,6 +399,10 @@ img {
   z-index: 1;
 }
 
+#features-wrap {
+  padding: clamp(45px, 8vw, 90px) clamp(20px, 4vw, 40px);
+}
+
 #library {
   margin: 0 auto;
   display: flex;
