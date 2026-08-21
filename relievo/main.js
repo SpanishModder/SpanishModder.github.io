@@ -327,7 +327,7 @@
     if (!MAP.drawStart || !MAP.drawCurrent) return;
     const dx = Math.abs(MAP.drawCurrent.x - MAP.drawStart.x);
     const dy = Math.abs(MAP.drawCurrent.y - MAP.drawStart.y);
-    if (dx < 16 || dy < 16) { renderMap(); return; } // too small, ignore (treat as tap)
+    if (dx < 16 || dy < 16) { renderMap(); return; } // too small, ignore (treat as a tap)
     const p0 = screenToLonLat(MAP.drawStart.x, MAP.drawStart.y);
     const p1 = screenToLonLat(MAP.drawCurrent.x, MAP.drawCurrent.y);
     MAP.selection = {
@@ -358,10 +358,10 @@
       lastQuery = q;
       try {
         const url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&q=" + encodeURIComponent(q);
-        const res = await fetch(url, { headers: { "Accept-Language": "es" } });
+        const res = await fetch(url, { headers: { "Accept-Language": "en" } });
         const results = await res.json();
         renderResults(results);
-      } catch (_) { /* silent — search is a nicety, not core */ }
+      } catch (_) { /* silent — search is a convenience, not a core feature */ }
     }, 450);
 
     input.addEventListener("input", runSearch);
@@ -546,7 +546,7 @@
   function updateStats({ w, h, realMin, realMax, tiles, zoom }) {
     $("#statResolution").textContent = w + " × " + h + " px";
     $("#statRealRange").textContent = Math.round(realMin) + " m – " + Math.round(realMax) + " m";
-    $("#statSource").textContent = tiles + " teselas · zoom de datos " + zoom;
+    $("#statSource").textContent = tiles + " tiles · data zoom " + zoom;
     const coarse = zoom <= 8;
     $("#coarseHint").hidden = !coarse;
   }
@@ -556,10 +556,10 @@
     if (!bounds) return;
     setToolState("loading");
     hideWarning();
-    setProgress(0, 1, "Preparando descarga de datos de elevación");
+    setProgress(0, 1, "Preparing elevation data download");
     try {
       const grid = await buildElevationGrid(bounds, (loaded, total) => {
-        setProgress(loaded, total, "Descargando datos de elevación");
+        setProgress(loaded, total, "Downloading elevation data");
       });
       if (grid.failed === grid.total) throw new Error("no-data");
       CURRENT_GRID = grid;
@@ -567,7 +567,7 @@
       recomputePreview();
       setToolState("done");
       if (grid.failed > 0) {
-        showWarning(grid.failed + " de " + grid.total + " teselas no se pudieron cargar (probablemente océano o zona sin datos). El resultado puede tener huecos planos.");
+        showWarning(grid.failed + " of " + grid.total + " tiles could not be loaded (probably ocean or an area with no data). The result may contain flat areas.");
       }
     } catch (err) {
       console.warn("[processSelection]", err);

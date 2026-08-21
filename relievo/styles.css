@@ -100,6 +100,11 @@ ul { list-style: none; padding: 0; }
 /* ==========================================================================
    Hero
    ========================================================================== */
+
+#hero-eyebrow {
+  color: var(--accent-ink);
+}
+
 .hero { padding: 1.6rem 0 1rem; }
 .hero-eyebrow {
   font-family: var(--mono); font-size: .78rem; letter-spacing: .04em; color: var(--contour);
@@ -107,7 +112,7 @@ ul { list-style: none; padding: 0; }
 }
 .hero-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--contour); }
 .hero h1 { font-size: clamp(1.7rem, 1.2rem + 2vw, 2.7rem); max-width: 20ch; }
-.hero p.lede { margin-top: .75rem; color: var(--graphite); max-width: 56ch; font-size: 1.02rem; }
+.hero p.lede { margin-top: .75rem; color: var(--graphite); font-size: 1.02rem; }
 
 /* ==========================================================================
    Tool card — the instrument panel
