@@ -562,7 +562,6 @@ img {
 
 .game-card:hover {
   border-color: var(--border-lt);
-  transform: translate(-3px, -3px);
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
 }
 

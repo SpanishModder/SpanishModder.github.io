@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const navMobile = document.getElementById('nav-mobile');
   const searchInput = document.getElementById('search');
-  const cards = document.querySelectorAll('.game-card');
-  const noResults = document.getElementById('no-results');
+  var noResults = document.getElementById('no-results');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const reveals = document.querySelectorAll('.reveal');
   const stats = document.querySelectorAll('.stat-num[data-count]');
@@ -109,6 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeFilter = 'all';
 
   function filterCards() {
+    const cards = document.querySelectorAll('.game-card');
+
     if (!searchInput || !cards.length) return;
 
     const q = searchInput.value.toLowerCase().trim();
@@ -127,6 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (show) visible += 1;
     });
 
+    noResults = document.getElementById('no-results');
+    console.log(noResults)
     if (noResults) {
       noResults.style.display = visible === 0 ? 'block' : 'none';
     }
@@ -168,3 +171,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterCards();
 });
+
+async function loadGames() {
+    try {
+        const response = await fetch("data/games.json");
+
+        if (!response.ok) {
+            throw new Error(`Error al cargar games.json: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const gamesGrid = document.getElementById("games-grid");
+
+        if (!gamesGrid) {
+            throw new Error('No se encontró el elemento con id="games-grid"');
+        }
+
+        // Limpiamos el contenido por si ya hubiera alguna card
+        gamesGrid.innerHTML = '<p id="no-results">No titles found for that search.</p>';
+        noResults = document.getElementById('no-results');
+
+        data.games.forEach(game => {
+            const article = document.createElement("article");
+            article.className = "game-card reveal";
+            article.dataset.tags = game["upper-tags"];
+
+            article.innerHTML = `
+                <a class="game-cover-link"
+                   href="${game.link}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    <img class="game-cover"
+                         src="${game.thumb}"
+                         alt="${game.name}"
+                         loading="lazy">
+
+                    ${game.release
+                        ? '<span class="game-badge badge-new">New</span>'
+                        : '<span class="game-badge badge-classic">Classic</span>'
+                    }
+                </a>
+
+                <div class="game-body">
+
+                    <div class="game-meta">
+                        <span class="game-genre">${game.genres}</span>
+                        <span class="game-year">${game.date}</span>
+                    </div>
+
+                    <h3 class="game-title">${game.name}</h3>
+
+                    <p class="game-desc">
+                        ${game.desc}
+                    </p>
+
+                    <div class="game-footer">
+
+                        <div class="game-tags">
+                            ${game["lower-tags"]
+                                .map(tag => `<span class="tag">${tag}</span>`)
+                                .join("")
+                            }
+                        </div>
+
+                        <a class="access-btn"
+                           href="${game.link}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Access →
+                        </a>
+
+                    </div>
+                </div>
+            `;
+
+            gamesGrid.appendChild(article);
+        });
+
+    } catch (error) {
+      console.error("Error cargando los juegos:", error);
+    }
+}
+
+loadGames();

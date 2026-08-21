@@ -1,0 +1,100 @@
+{
+	"games": [
+		{
+			"name": "Papers Please",
+			"desc": "Work as a border inspector in the fictional communist country of Arstotzka. Review documents and decide who may enter while navigating political pressure and moral dilemmas.",
+			"upper-tags": "indie simulation puzzle",
+			"lower-tags": ["Indie", "Story-rich"],
+			"link": "https://drive.google.com/file/d/1TSObjEix3ojyn4Di3MR8dvr0RTQGFzl6/view?usp=drive_link",
+			"thumb": "assets/papers_please.png",
+			"release": false,
+			"date": 2013,
+			"genres": "Puzzle · Simulation"
+		},
+		{
+			"name": "Spore",
+			"desc": "Evolve a species from a microscopic cell to a space-faring civilization. Five distinct gameplay stages combine simulation, strategy and role-playing with extensive procedural generation.",
+			"upper-tags": "strategy simulation",
+			"lower-tags": [
+					"God Game",
+					"Sandbox"
+			],
+			"link": "https://drive.google.com/file/d/1QqMXl98tsSyt4nsNDIcWPfAUFd7OCFfW/view?usp=drive_link",
+			"thumb": "assets/spore.jpg",
+			"release": false,
+			"date": 2008,
+			"genres": "Strategy · Simulation"
+		},
+		{
+			"name": "Balatro",
+			"desc": "A poker-themed roguelike deck-builder built around powerful synergies. Exploit Jokers and Tarot cards to break the game's own rules and reach impossible score targets.",
+			"upper-tags": "indie strategy",
+			"lower-tags": [
+					"Indie",
+					"Roguelike"
+			],
+			"link": "https://drive.google.com/file/d/1xvLvcSVijO4WeEqXVXkTp29Ztmf8iyeL/view?usp=drive_link",
+			"thumb": "assets/balatro.webp",
+			"release": true,
+			"date": 2024,
+			"genres": "Roguelike · Cards"
+		},
+		{
+			"name": "Plants vs. Zombies",
+			"desc": "Defend your home from a zombie apocalypse by strategically placing plants with unique abilities. A timeless classic that defined the tower defense genre for a generation.",
+			"upper-tags": "strategy simulation",
+			"lower-tags": [
+					"Strategy",
+					"Casual"
+			],
+			"link": "https://drive.google.com/file/d/1lmOfIqL6IBAilZ-DhLN_f0DrguqckcmL/view?usp=drive_link",
+			"thumb": "assets/pvz.webp",
+			"release": false,
+			"date": 2009,
+			"genres": "Tower Defense · Strategy"
+		},
+		{
+			"name": "Age of History II",
+			"desc": "A compact but highly replayable grand strategy experience. It focuses on map control, diplomacy, and expansion with a clean design that rewards long-term planning.",
+			"upper-tags": "strategy indie",
+			"lower-tags": [
+					"Indie",
+					"Strategy",
+					"Grand-scale"
+			],
+			"link": "https://drive.google.com/file/d/1kO7RNh7wVWG4HnzilqmzJTCFzv3oH-DQ/view?usp=drive_link",
+			"thumb": "assets/aoh2.png",
+			"release": false,
+			"date": 2018,
+			"genres": "Grand Strategy"
+		},
+		{
+			"name": "Rimworld",
+			"desc": "A sci-fi colony management simulator and story generator developed by Ludeon Studios. You guide a few crash-landed survivors on a distant, lawless planet as they build a base, manage their mental and physical health, fight raiders, and try to escape.",
+			"upper-tags": "strategy simulation",
+			"lower-tags": [
+					"Strategy",
+					"Simulation"
+			],
+			"link": "https://drive.google.com/file/d/1OssbdeiRGJEmP3c6KNfvw7Gb4oxBYd5C/view?usp=sharing",
+			"thumb": "assets/rimworld.jpg",
+			"release": true,
+			"date": 2018,
+			"genres": "Colony Simulator"
+		},
+		{
+			"name": "Mini Motorways",
+			"desc": "A minimalist strategy and puzzle video game where players draw road networks to manage traffic in a growing city. Created by Dinosaur Polo Club (the developers of Mini Metro), the game challenges you to connect color-coded homes and destinations while preventing traffic jams.",
+			"upper-tags": "strategy puzzle",
+			"lower-tags": [
+					"Puzzle",
+					"Simulation"
+			],
+			"link": "https://drive.google.com/file/d/15wu0T5pXYgWtaSnXDtnO7LhMb43a3x_i/view?usp=sharing",
+			"thumb": "assets/mini-motorways.jpg",
+			"release": true,
+			"date": 2021,
+			"genres": "Traffic Simulator"
+		}
+	]
+}
