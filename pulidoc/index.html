@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Format Word online for free | Pulidoc</title>
+<meta name="description" content="Upload your Word document, choose a style and download it formatted instantly. Fix spaces, punctuation and headings. 100% private, no files uploaded.">
+<link rel="canonical" href="https://spanishmodder.github.io/pulidoc">
+<meta property="og:title" content="Pulidoc — format your Word online for free">
+<meta property="og:description" content="Turn a poorly formatted Word document into a professional one in seconds, with real-time preview. Everything happens in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="favicon.ico">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="styles.css?v=20260821">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pulidoc",
+  "description": "Free online tool to clean and format Word documents (.docx) with real-time preview, 100% in the browser.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is my document uploaded to any server?", "acceptedAnswer": { "@type": "Answer", "text": "No. The entire process takes place in your own browser. The file never leaves your computer." } },
+    { "@type": "Question", "name": "What types of errors does it automatically fix?", "acceptedAnswer": { "@type": "Answer", "text": "Double spaces, spaces before commas or periods, missing spaces after punctuation marks, repeated manual line breaks and consecutive empty paragraphs." } },
+    { "@type": "Question", "name": "Can the downloaded file still be edited in Word?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is a normal .docx file. Pulidoc rewrites the internal styles; it does not generate an image or a PDF." } }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <a href="/" class="logo">Pulidoc</a>
+  <nav class="header-nav">
+    <a href="#how-it-works">How it works</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <h1>Format your Word online, for free</h1>
+    <p class="hero-sub">Upload your document, choose a style and see the changes instantly. Download it without registration or fees.</p>
+  </section>
+
+  <section class="tool-card" data-state="idle">
+    <!-- IDLE: dropzone -->
+    <div class="tool-panel tool-panel--idle">
+      <label class="dropzone" for="file-input" id="dropzone">
+        <svg class="dz-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 6v24m0 0-8-8m8 8 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 32v6a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4v-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="dz-title">Drag your .docx document here</span>
+        <span class="dz-sub">or click to choose it — works with Word 2007 and later</span>
+        <input type="file" id="file-input" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+      </label>
+      <p class="privacy-badge">🔒 100% private — your file is processed on your device and is not uploaded to any server.</p>
+      <p class="limits-note">Works with documents up to ~20 MB. .docx format only (not the older .doc format).</p>
+    </div>
+
+    <!-- ERROR -->
+    <div class="tool-panel tool-panel--error">
+      <p class="error-msg" data-error-msg>Something went wrong while reading the document.</p>
+      <button type="button" class="btn btn-secondary" data-retry>Try another file</button>
+    </div>
+
+    <!-- WORKING: editor + live preview -->
+    <div class="tool-panel tool-panel--working">
+      <div class="editor-grid">
+        <aside class="controls" aria-label="Formatting options">
+          <div class="controls-scroll">
+            <h2 class="controls-title">1. Choose a style</h2>
+            <div class="preset-grid" data-presets>
+              <button type="button" class="preset-btn" data-preset="profesional">Professional</button>
+              <button type="button" class="preset-btn" data-preset="academico">Academic</button>
+              <button type="button" class="preset-btn" data-preset="moderno">Modern</button>
+              <button type="button" class="preset-btn" data-preset="minimalista">Minimalist</button>
+              <button type="button" class="preset-btn" data-preset="legal">Legal</button>
+            </div>
+
+            <h2 class="controls-title">2. Customize</h2>
+            <div class="field-grid">
+              <label class="field">
+                <span>Body font</span>
+                <select data-opt="bodyFont"></select>
+              </label>
+              <label class="field">
+                <span>Heading font</span>
+                <select data-opt="headingFont"></select>
+              </label>
+              <label class="field">
+                <span>Accent color</span>
+                <input type="color" data-opt="accentColor" value="#1f4e5f">
+              </label>
+              <label class="field">
+                <span>Text size</span>
+                <select data-opt="bodySizePt">
+                  <option value="10">10 pt</option>
+                  <option value="11" selected>11 pt</option>
+                  <option value="12">12 pt</option>
+                  <option value="13">13 pt</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Line spacing</span>
+                <select data-opt="lineSpacing">
+                  <option value="240">Single</option>
+                  <option value="276">1.15</option>
+                  <option value="360">1.5</option>
+                  <option value="480">Double</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Paragraph spacing</span>
+                <select data-opt="paraSpacing">
+                  <option value="80">Compact</option>
+                  <option value="160">Normal</option>
+                  <option value="240">Wide</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Margins</span>
+                <select data-opt="margins">
+                  <option value="narrow">Narrow</option>
+                  <option value="normal">Normal</option>
+                  <option value="wide">Wide</option>
+                </select>
+              </label>
+              <label class="field field-check">
+                <input type="checkbox" data-opt="justify">
+                <span>Justified text</span>
+              </label>
+            </div>
+
+            <h2 class="controls-title">3. Automatic cleanup</h2>
+            <div class="field-grid">
+              <label class="field field-check">
+                <input type="checkbox" data-opt="fixPunctuation" checked>
+                <span>Fix spacing and punctuation</span>
+              </label>
+              <label class="field field-check">
+                <input type="checkbox" data-opt="fixBreaks" checked>
+                <span>Remove unnecessary line breaks</span>
+              </label>
+              <label class="field field-check">
+                <input type="checkbox" data-opt="autoHeadings" checked>
+                <span>Detect headings automatically</span>
+              </label>
+              <label class="field field-check">
+                <input type="checkbox" data-opt="uniformStyle" checked>
+                <span>Apply a consistent style (remove manual formatting)</span>
+              </label>
+            </div>
+
+            <h2 class="controls-title">4. Download</h2>
+            <label class="field">
+              <span>File name</span>
+              <div class="filename-row">
+                <input type="text" data-filename value="formatted-document">
+                <span class="ext">.docx</span>
+              </div>
+            </label>
+            <button type="button" class="btn btn-primary btn-download" data-download>
+              ⬇ Download formatted .docx
+            </button>
+            <button type="button" class="btn btn-text" data-retry>convert another document</button>
+          </div>
+        </aside>
+
+        <div class="preview-wrap">
+          <div class="preview-toolbar">
+            <span data-preview-status>Live preview</span>
+          </div>
+          <div class="preview-scroll">
+            <div class="preview-page" data-preview-page>
+              <div class="preview-content" data-preview-content></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot ad-slot--leaderboard">
+    <script>
+      atOptions = {
+        'key' : '58aeeb7b6df470911847a4898053672a',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highrevenueformat.com/58aeeb7b6df470911847a4898053672a/invoke.js"></script>
+  </div>
+
+  <section class="how-it-works" id="how-it-works">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12m0 0-4-4m4 4 4-4M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Upload your document</h3>
+        <p>Drag your .docx file or select it. It stays in your browser and never reaches a server.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Choose and adjust the style</h3>
+        <p>Try the presets and change fonts, colors, margins or line spacing. See the result instantly.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12m0 0-4-4m4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Download the result</h3>
+        <p>Name the file and download it. It is a normal .docx file, editable in Word, Google Docs or LibreOffice.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seo-copy">
+    <h2>Why a Word document "looks bad" and how to fix it</h2>
+    <p class="justified">Most unprofessional Word documents do not have a content problem, but a consistency problem: each heading uses a different font and size because they were changed manually, there are double spaces and stray spaces before commas, and paragraphs are separated by pressing Enter several times instead of using the spacing built into the style. Word can fix all of this at once if the document uses paragraph styles (Normal, Heading 1, Heading 2) instead of manual formatting.</p>
+    <p class="justified">Pulidoc analyzes the document, detects that manual formatting and replaces it with a consistent style definition: one font and size for the body text, another for headings, consistent paragraph spacing and uniform margins. It also cleans up the most common punctuation errors — spaces before commas, periods without a space after them, duplicate line breaks — so the text reads as smoothly as a well-formatted document.</p>
+    <p class="justified">The result remains a normal .docx file: it opens in Word, Google Docs or LibreOffice and can still be edited like any other document. Nothing is uploaded to a server at any point in the process.</p>
+  </section>
+
+  <div class="ad-slot ad-slot--incontent">
+    <script>
+      atOptions = {
+        'key' : '58aeeb7b6df470911847a4898053672a',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highrevenueformat.com/58aeeb7b6df470911847a4898053672a/invoke.js"></script>
+  </div>
+
+  <section class="faq" id="faq">
+    <h2>Frequently asked questions</h2>
+    <div data-faq-list></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Pulidoc</span>
+  <nav>
+    <a href="privacy.html">Privacy</a>
+    <a href="legal-notice.html">Legal notice</a>
+  </nav>
+</footer>
+
+<script defer src="lib/manifest.js"></script>
+<script defer src="engine/zip.js"></script>
+<script defer src="engine/docx-model.js"></script>
+<script defer src="main.js?v=20260821"></script>
+</body>
+</html>
