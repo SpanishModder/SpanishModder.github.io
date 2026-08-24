@@ -5,7 +5,12 @@
   var $$ = function (sel, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(sel)); };
   function safe(fn, name) { try { fn(); } catch (e) { console.warn("[" + name + "]", e); } }
 
-  var FONTS = ["Calibri", "Arial", "Georgia", "Times New Roman", "Garamond", "Verdana", "Cambria", "Segoe UI"];
+  var FONTS = [
+    "Calibri", "Arial", "Georgia",
+    "Times New Roman", "Garamond", "Verdana",
+    "Cambria", "Segoe UI", "Haettenschweiler",
+    "Lucida Bright", "Montserrat", "Trebuchet",
+  ];
 
   var MARGIN_PRESETS = {
     narrow: { top: 720, right: 720, bottom: 720, left: 720 },
@@ -21,7 +26,7 @@
     legal: { bodyFont: "Times New Roman", headingFont: "Times New Roman", accentColor: "#000000", bodySizePt: 12, lineSpacing: 360, paraSpacing: 80, margins: "wide", justify: true }
   };
 
-  var state = { engineState: null, originalName: "documento", activePreset: "profesional" };
+  var state = { engineState: null, originalName: "document", activePreset: "profesional" };
 
   function saveBlob(blob, name) {
     var a = document.createElement("a");
@@ -122,36 +127,36 @@
     state.lastProcessed = processed;
     state.lastSettings = settings;
     var html = PulidocEngine.renderPreviewHtml(processed, state.engineState);
-    $("[data-preview-content]").innerHTML = html || "<p class=\"pv-empty\">(el documento parece estar vacío)</p>";
+    $("[data-preview-content]").innerHTML = html || "<p class=\"pv-empty\">(the document appears to be empty)</p>";
     updatePreviewStyleVars(settings);
   }
 
   async function handleFile(file) {
     if (!file) return;
     if (!/\.docx$/i.test(file.name)) {
-      showError("Ese archivo no parece un .docx. Si tienes un .doc antiguo, ábrelo en Word y usa \"Guardar como\" eligiendo .docx.");
+      showError("This file does not appear to be a .docx file. If you have an old .doc file, open it in Word and use \"Save As\" to choose .docx.");
       return;
     }
     if (!PulidocZip.supported()) {
-      showError("Tu navegador no soporta esta función. Prueba a actualizarlo o usa una versión reciente de Chrome, Edge o Firefox.");
+      showError("Your browser does not support this feature. Try updating it or use a recent version of Chrome, Edge, or Firefox.");
       return;
     }
     try {
       var buffer = await file.arrayBuffer();
       var filesMap = await PulidocZip.read(buffer);
       if (!filesMap.has("word/document.xml")) {
-        throw new Error("El archivo no contiene un documento de Word válido.");
+        throw new Error("The file does not contain a valid Word document.");
       }
       state.filesMap = filesMap;
       state.engineState = PulidocEngine.load(filesMap);
       state.originalName = file.name.replace(/\.docx$/i, "");
-      $("[data-filename]").value = state.originalName + "-formateado";
+      $("[data-filename]").value = state.originalName + "-formatted";
       setCardState("working");
       applyPresetToControls(state.activePreset || "profesional");
       updatePreview();
     } catch (e) {
       console.warn("[handleFile]", e);
-      showError("No se ha podido leer el documento. Comprueba que sea un .docx válido y no esté protegido con contraseña.");
+      showError("The document could not be read. Make sure it is a valid .docx file and is not password-protected.");
     }
   }
 
@@ -159,7 +164,7 @@
     if (!state.lastProcessed) return;
     var newFiles = PulidocEngine.toFilesMap(state.filesMap, state.lastProcessed);
     var blob = PulidocZip.write(newFiles);
-    var name = ($("[data-filename]").value || "documento-formateado").trim() || "documento-formateado";
+    var name = ($("[data-filename]").value || "formatted-document").trim() || "formatted-document";
     saveBlob(blob, name.replace(/\.docx$/i, "") + ".docx");
   }
 
