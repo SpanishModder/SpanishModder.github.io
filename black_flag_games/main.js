@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  loadGames();
   filterCards();
 });
 
@@ -253,5 +254,3 @@ async function loadGames() {
       console.error("Error cargando los juegos:", error);
     }
 }
-
-loadGames();
