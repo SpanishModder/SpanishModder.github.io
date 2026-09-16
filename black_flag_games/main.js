@@ -1,3 +1,16 @@
+// Estado compartido entre el listener de DOMContentLoaded y loadGames()
+let revealObserver = null;
+let noResults = null;
+
+// Marca un elemento .reveal como observado (o visible si no hay soporte de IO)
+function revealEl(el) {
+  if (revealObserver) {
+    revealObserver.observe(el);
+  } else {
+    el.classList.add('visible');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const progress = document.getElementById('progress');
@@ -5,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const navMobile = document.getElementById('nav-mobile');
   const searchInput = document.getElementById('search');
-  var noResults = document.getElementById('no-results');
+  noResults = document.getElementById('no-results');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const reveals = document.querySelectorAll('.reveal');
   const stats = document.querySelectorAll('.stat-num[data-count]');
@@ -56,7 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
+    // Guardamos la instancia en la variable compartida para poder
+    // observar también las cards que se creen más tarde (loadGames).
+    revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
@@ -129,11 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     noResults = document.getElementById('no-results');
-    console.log(noResults)
     if (noResults) {
       noResults.style.display = visible === 0 ? 'block' : 'none';
     }
   }
+
+  // La exponemos para que loadGames() pueda llamarla cuando termine de pintar las cards.
+  window.filterCards = filterCards;
 
   if (searchInput) {
     searchInput.addEventListener('input', filterCards);
@@ -170,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   loadGames();
-  filterCards();
 });
 
 async function loadGames() {
@@ -248,9 +264,19 @@ async function loadGames() {
             `;
 
             gamesGrid.appendChild(article);
+            // Clave: registramos cada card nueva en el observer de reveals
+            // (o la marcamos visible directamente si no hay IntersectionObserver).
+            revealEl(article);
         });
+
+        // Ahora sí, con las cards ya en el DOM, aplicamos el filtro/búsqueda inicial.
+        if (window.filterCards) window.filterCards();
 
     } catch (error) {
       console.error("Error cargando los juegos:", error);
+      const gamesGrid = document.getElementById("games-grid");
+      if (gamesGrid) {
+        gamesGrid.innerHTML = '<p id="no-results" style="display:block">No se pudieron cargar los títulos. Intenta recargar la página.</p>';
+      }
     }
 }
