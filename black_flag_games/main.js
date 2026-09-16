@@ -210,7 +210,7 @@ async function loadGames() {
 
         data.games.forEach(game => {
             const article = document.createElement("article");
-            article.className = "game-card reveal";
+            article.className = "game-card";
             article.dataset.tags = game["upper-tags"];
 
             article.innerHTML = `
