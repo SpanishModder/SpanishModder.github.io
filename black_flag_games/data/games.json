@@ -1,6 +1,48 @@
 {
 	"games": [
 		{
+			"name": "Circle Empires Rivals",
+			"desc": "Circle Empires Rivals is a fast-paced multiplayer real-time strategy (RTS) video game developed by Luminous Games and published by Iceberg Interactive. It is the multiplayer successor to the original Circle Empires game.",
+			"upper-tags": "strategy",
+			"lower-tags": [
+					"Strategy",
+					"Management"
+			],
+			"link": "https://drive.google.com/file/d/1nNqT6Yx5OS9-J0vYSZLkA04T_mw3y-VM/view?usp=sharing",
+			"thumb": "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119000/indie-center/34_1684716424145.png",
+			"release": true,
+			"date": 2020,
+			"genres": "Kingdom Simulator"
+		},
+		{
+			"name": "Circle Empires 2",
+			"desc": "Circle Empires 2 is a fast-paced, real-time strategy (RTS) game where you expand your kingdom by conquering a procedurally generated world made entirely of interconnected circles.",
+			"upper-tags": "strategy",
+			"lower-tags": [
+					"Strategy",
+					"Management"
+			],
+			"link": "https://drive.google.com/file/d/1823RreriZhNjFTR-uPCEwNxsPPkkU35N/view?usp=sharing",
+			"thumb": "https://assets-prd.ignimgs.com/2024/11/19/circle-1732044238226.jpg",
+			"release": true,
+			"date": 2026,
+			"genres": "Kingdom Simulator"
+		},
+		{
+			"name": "Game Dev Tycoon",
+			"desc": "Game Dev Tycoon is a business simulation game where you start a game development company from a 1980s garage. Players must create hit titles by combining genres and topics, manage finances, and research new technologies. As your studio grows, you will hire staff, move to larger offices, and build a global gaming empire.",
+			"upper-tags": "strategy puzzle",
+			"lower-tags": [
+					"Strategy",
+					"Text-based"
+			],
+			"link": "https://drive.google.com/file/d/1uurYVzXg--iVyMR8Erz8J_e3eJW51HfN/view?usp=sharing",
+			"thumb": "https://wolfsgamingblog.com/wp-content/uploads/2013/05/logo-wide-180-400x193.png",
+			"release": true,
+			"date": 2012,
+			"genres": "Business Tycoon"
+		},
+		{
 			"name": "Papers Please",
 			"desc": "Work as a border inspector in the fictional communist country of Arstotzka. Review documents and decide who may enter while navigating political pressure and moral dilemmas.",
 			"upper-tags": "indie simulation puzzle",
@@ -28,14 +70,14 @@
 		{
 			"name": "Balatro",
 			"desc": "A poker-themed roguelike deck-builder built around powerful synergies. Exploit Jokers and Tarot cards to break the game's own rules and reach impossible score targets.",
-			"upper-tags": "indie strategy",
+			"upper-tags": "indie",
 			"lower-tags": [
 					"Indie",
 					"Roguelike"
 			],
 			"link": "https://drive.google.com/file/d/1xvLvcSVijO4WeEqXVXkTp29Ztmf8iyeL/view?usp=drive_link",
 			"thumb": "assets/balatro.webp",
-			"release": true,
+			"release": false,
 			"date": 2024,
 			"genres": "Roguelike · Cards"
 		},
@@ -78,7 +120,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1OssbdeiRGJEmP3c6KNfvw7Gb4oxBYd5C/view?usp=sharing",
 			"thumb": "assets/rimworld.jpg",
-			"release": true,
+			"release": false,
 			"date": 2018,
 			"genres": "Colony Simulator"
 		},
@@ -92,7 +134,7 @@
 			],
 			"link": "https://drive.google.com/file/d/15wu0T5pXYgWtaSnXDtnO7LhMb43a3x_i/view?usp=sharing",
 			"thumb": "assets/mini-motorways.jpg",
-			"release": true,
+			"release": false,
 			"date": 2021,
 			"genres": "Traffic Simulator"
 		}
