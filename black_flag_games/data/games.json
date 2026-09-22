@@ -1,6 +1,20 @@
 {
 	"games": [
 		{
+			"name": "Cloverpit",
+			"desc": "CloverPit is a psychological horror rogue-lite strategy game where you are trapped in a cell with a slot machine. You must collect over 150 unique charms to manipulate symbols and break the odds to pay off a rising debt and escape.",
+			"upper-tags": "strategy",
+			"lower-tags": [
+					"Strategy",
+					"Roguelite"
+			],
+			"link": "https://drive.google.com/file/d/1hU883-GKAAzNDhhwLr8Bh7bPitiKL65n/view?usp=sharing",
+			"thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTksBLNWz14SMUSWFwh11-mQ_Vl9Ij8UtrYOHCJgUH9sQ&s=10",
+			"release": true,
+			"date": 2025,
+			"genres": "Roguelike"
+		},
+		{
 			"name": "Circle Empires Rivals",
 			"desc": "Circle Empires Rivals is a fast-paced multiplayer real-time strategy (RTS) video game developed by Luminous Games and published by Iceberg Interactive. It is the multiplayer successor to the original Circle Empires game.",
 			"upper-tags": "strategy",
