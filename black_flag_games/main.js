@@ -1,6 +1,7 @@
 // Estado compartido entre el listener de DOMContentLoaded y loadGames()
 let revealObserver = null;
 let noResults = null;
+const stats = document.querySelectorAll('.stat-num[data-count]');
 
 // Marca un elemento .reveal como observado (o visible si no hay soporte de IO)
 function revealEl(el) {
@@ -10,6 +11,21 @@ function revealEl(el) {
     el.classList.add('visible');
   }
 }
+
+function animateCount(el) {
+    const target = Number(el.dataset.count || 0);
+    const duration = 1200;
+    const start = performance.now();
+
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = String(Math.round(ease * target));
+      if (t < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
 
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
@@ -21,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   noResults = document.getElementById('no-results');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const reveals = document.querySelectorAll('.reveal');
-  const stats = document.querySelectorAll('.stat-num[data-count]');
   const navLinks = document.querySelectorAll('.nav-links a');
   const toast = document.getElementById('toast');
 
@@ -102,22 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
     tracked.forEach((el) => sectionObserver.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('visible'));
-    stats.forEach((el) => animateCount(el));
-  }
-
-  function animateCount(el) {
-    const target = Number(el.dataset.count || 0);
-    const duration = 1200;
-    const start = performance.now();
-
-    function step(now) {
-      const t = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
-      el.textContent = String(Math.round(ease * target));
-      if (t < 1) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
   }
 
   let activeFilter = 'all';
@@ -191,6 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadGames() {
     try {
+        const titleCount = document.getElementById('title-count')
+
         const response = await fetch("data/games.json");
 
         if (!response.ok) {
@@ -199,6 +200,9 @@ async function loadGames() {
 
         const data = await response.json();
         const gamesGrid = document.getElementById("games-grid");
+
+        titleCount.setAttribute("data-count", data.games.length);
+        stats.forEach((el) => animateCount(el));
 
         if (!gamesGrid) {
             throw new Error('No se encontró el elemento con id="games-grid"');
