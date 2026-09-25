@@ -1,7 +1,7 @@
 {
 	"games": [
 		{
-			"name": "Cloverpit",
+			"name": "CloverPit",
 			"desc": "CloverPit is a psychological horror rogue-lite strategy game where you are trapped in a cell with a slot machine. You must collect over 150 unique charms to manipulate symbols and break the odds to pay off a rising debt and escape.",
 			"upper-tags": "strategy",
 			"lower-tags": [
@@ -12,7 +12,35 @@
 			"thumb": "https://wallpapercave.com/wp/wp15848287.jpg",
 			"release": true,
 			"date": 2025,
-			"genres": "Roguelike"
+			"genres": "Roguelite"
+		},
+		{
+			"name": "Geometry Dash",
+			"desc": "Geometry Dash is a fast-paced rhythm-based platformer game developed by Swedish creator Robert Topala and published by RobTop Games. Originally launched in August 2013 for mobile devices and later released on PC via Steam, the game requires you to guide a customizable icon through hazardous, obstacle-filled levels that are perfectly synced to high-energy electronic music.",
+			"upper-tags": "Rhythm-based",
+			"lower-tags": [
+					"Rhythm",
+					"Platformer"
+			],
+			"link": "https://drive.google.com/file/d/1IOfgVHI4uwTmce7G7NJo3s7L76j7pTtP/view?usp=sharing",
+			"thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT72Cc55QbgMVV8qUZWJeY1Blcc9WTXN51BYzHeU5zR3PeFQc0KdSACac4&s=10",
+			"release": true,
+			"date": 2013,
+			"genres": "Platformer"
+		},
+		{
+			"name": "How To Fish",
+			"desc": "How to Fish is a chaotic, physics-based fishing simulator and action-casual game developed and published by Dazed Games. Released on August 20, 2026, for PC via Steam (and also featuring a mobile version and Roblox adaptation), the game turns a traditional fishing simulator into a wild, comedic survival adventure.",
+			"upper-tags": "Physics-based",
+			"lower-tags": [
+					"Physics",
+					"Simulation"
+			],
+			"link": "https://drive.google.com/file/d/1aNej0XboA65m-aUDxa97lUPWAgGvRTJr/view?usp=sharing",
+			"thumb": "https://assets.games.gg/how_to_fish_game_cover_a8d99afc94.jfif",
+			"release": true,
+			"date": 2026,
+			"genres": "Simulation"
 		},
 		{
 			"name": "Circle Empires Rivals",
@@ -24,7 +52,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1nNqT6Yx5OS9-J0vYSZLkA04T_mw3y-VM/view?usp=sharing",
 			"thumb": "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119000/indie-center/34_1684716424145.png",
-			"release": true,
+			"release": false,
 			"date": 2020,
 			"genres": "Kingdom Simulator"
 		},
@@ -38,7 +66,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1823RreriZhNjFTR-uPCEwNxsPPkkU35N/view?usp=sharing",
 			"thumb": "https://assets-prd.ignimgs.com/2024/11/19/circle-1732044238226.jpg",
-			"release": true,
+			"release": false,
 			"date": 2026,
 			"genres": "Kingdom Simulator"
 		},
@@ -52,7 +80,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1uurYVzXg--iVyMR8Erz8J_e3eJW51HfN/view?usp=sharing",
 			"thumb": "https://wolfsgamingblog.com/wp-content/uploads/2013/05/logo-wide-180-400x193.png",
-			"release": true,
+			"release": false,
 			"date": 2012,
 			"genres": "Business Tycoon"
 		},
