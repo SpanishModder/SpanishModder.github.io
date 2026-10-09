@@ -1,6 +1,34 @@
 {
 	"games": [
 		{
+			"name": "Golf It!",
+			"desc": "Golf It! is a fast-paced multiplayer minigolf game for up to 8 players who all hit their balls simultaneously without waiting. It features diverse official maps, a powerful level editor, and full Steam Workshop support for endless community-made courses. The game also includes complete Virtual Reality support and a wide variety of unlockable cosmetics to customize your golf ball.",
+			"upper-tags": "puzzle simulation",
+			"lower-tags": [
+					"Sports",
+					"Simulation"
+			],
+			"link": "https://drive.google.com/file/d/1H4oPjhhLgus7C7Vdws6p56pNOXuzR-PR/view?usp=sharing",
+			"thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG1uZ2rMuOMsd3uZtqVQ3ODXkyfc3vA5micVWaasktYw&s=10",
+			"release": true,
+			"date": 2023,
+			"genres": "Sports"
+		},
+		{
+			"name": "Pokemon Anil",
+			"desc": "Pokémon Añil is an expansive fan-made PC game by Eric Lostie that modernizes the classic Kanto region by integrating Pokémon species, mechanics, and forms from Generation 1 through Generation 9. The game revitalizes the original story with custom areas and built-in difficulty settings, while offering highly customizable gameplay options like Nuzlocke, Randomizer, and VGC modes for a fresh, tailored experience.",
+			"upper-tags": "adventure rpg",
+			"lower-tags": [
+					"Adventure",
+					"RPG"
+			],
+			"link": "https://drive.google.com/file/d/1hRBP1d7qaL5YZKi2CCewJDMb8awm-frL/view?usp=sharing",
+			"thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJayqpG9nGXvKbuB-boXg-MsCXh67XfQmITACyUyyHLg&s=10",
+			"release": true,
+			"date": 2023,
+			"genres": "RPG"
+		},
+		{
 			"name": "CloverPit",
 			"desc": "CloverPit is a psychological horror rogue-lite strategy game where you are trapped in a cell with a slot machine. You must collect over 150 unique charms to manipulate symbols and break the odds to pay off a rising debt and escape.",
 			"upper-tags": "strategy",
@@ -10,7 +38,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1hU883-GKAAzNDhhwLr8Bh7bPitiKL65n/view?usp=sharing",
 			"thumb": "https://wallpapercave.com/wp/wp15848287.jpg",
-			"release": true,
+			"release": false,
 			"date": 2025,
 			"genres": "Roguelite"
 		},
@@ -24,7 +52,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1IOfgVHI4uwTmce7G7NJo3s7L76j7pTtP/view?usp=sharing",
 			"thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT72Cc55QbgMVV8qUZWJeY1Blcc9WTXN51BYzHeU5zR3PeFQc0KdSACac4&s=10",
-			"release": true,
+			"release": false,
 			"date": 2013,
 			"genres": "Platformer"
 		},
@@ -38,7 +66,7 @@
 			],
 			"link": "https://drive.google.com/file/d/1aNej0XboA65m-aUDxa97lUPWAgGvRTJr/view?usp=sharing",
 			"thumb": "https://assets.games.gg/how_to_fish_game_cover_a8d99afc94.jfif",
-			"release": true,
+			"release": false,
 			"date": 2026,
 			"genres": "Simulation"
 		},
