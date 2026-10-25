@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Among Us</title>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script></head><body>
+<link rel="stylesheet" href="style.css">
+<canvas id="cv" style="display:none"></canvas>
+
+<div id="menu" class="full">
+  <h1>AMONG US</h1><p class="subtitle">Someone aboard the Meridian is not who they say they are.</p>
+  <div class="container">
+    <p class="div-text">Account</p>
+    <input id="nm" placeholder="Nickname" maxlength="12">
+    <p class="div-text">Game</p>
+    <div class="row" style="width: 100%;"><input id="cd" placeholder="Room code" maxlength="4" style="width: 60%;text-transform:uppercase"><button id="bj" style="width: 40%;">Join game</button></div>
+    <div class="row" style="align-self: center;"><button id="bc" class="red">Create game</button><button id="bh">How to play</button></div>
+    <div id="err" hidden></div>
+    <div id="how" hidden>
+      <b>Crewmates</b> finish tasks (E near a glowing pad), report bodies (R), and vote out Impostors.<br>
+      <b>Impostors</b> hunt the Crew (Q or Space when close and ready), blend in, and win when they equal the Crew's numbers.<br>
+      <b>Meetings</b> start from a body report or the red button in the Cafeteria. Talk, then vote or skip.<br>
+      <b>Ghosts</b> keep doing tasks, walk through walls, and chat only with other ghosts.<br>
+      Move with WASD or arrow keys.
+    </div>
+  </div>
+</div>
+
+<div id="lobby" class="full" hidden>
+  <div style="display: flex; justify-items: center; align-items: center; gap: 10px;">
+    <h2>ROOM CODE:</h2>
+    <span class="code" id="lc"></span>
+    <button id="cp">Copy</button>
+  </div>
+  <div id="pl"></div>
+  <div class="row">
+    <label>Impostors <select id="si"><option>1</option><option>2</option><option>3</option></select></label>
+    <label>Kill cooldown (s) <input id="sk" type="number" min="10" max="60" style="width:80px"></label>
+    <label><input id="sc" type="checkbox"> Confirm ejects</label>
+    <label><input id="sa" type="checkbox"> Anonymous votes</label>
+  </div>
+  <div class="row"><button id="st" class="red">Start game</button><button id="lv">Leave room</button></div>
+  <p>Needs 4+ players. Only the host can start or change settings.</p><div id="err2"></div>
+</div>
+
+<div id="hud" hidden>
+  <div id="pgw"><div class="bar"><i id="pg"></i></div><div id="tl"></div></div>
+  <div id="tm"></div><div id="pr" hidden></div>
+  <div id="act">
+    <button id="bu">
+      <img src="assets/icons/use.png" alt="Shortcut: E">
+    </button>
+    <button id="br">
+      <img src="assets/icons/report.png" alt="Shortcut: R">
+    </button>
+    <button id="bv">
+      <img src="assets/icons/vent.png" alt="Shortcut: V">
+    </button>
+    <button id="bk" style="position:relative; padding:0; border:0; padding: 10px; background-color: transparent;">
+      <img src="assets/icons/kill.png" style="display:block;">
+      <p id = "tkcd" style="position:absolute; inset:0; color: white; -webkit-text-fill-color: white;
+      -webkit-text-stroke: 2px black;text-shadow: 0px 6px 5px black; margin:0;  font-size:280%; line-height:1; display:grid; place-items:center;">10</p>
+    </button>
+  </div>
+  <div id="map-container" hidden>
+    <h2>The Skeld</h2>
+    <div style="position:relative;display:inline-block;">
+      <img id="map-img" src="assets/images/map_imp.png" alt="map" style="display:block;">
+      <canvas id="map-overlay" width="980px" height="561px" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    </div>
+  </div>
+  <div id="rb" hidden></div>
+</div>
+
+<div id="task" hidden><div id="tw"><h2 id="tt"></h2><div id="tb"></div><button id="tx">Close (Esc)</button></div></div>
+
+<div id="meet" class="full" hidden>
+  <div id="mh"></div><div><span id="mp"></span> <b id="mt"></b></div><div id="rs"></div>
+  <div id="cards"></div>
+  <div id="chat"><div id="log"></div><div class="row" style="flex-wrap:nowrap"><input id="ci" maxlength="140" placeholder="Say something…" style="flex:1"><button id="cs">Send</button></div><p id="gn"></p></div>
+</div>
+
+<div id="over" class="full" hidden>
+  <h2>GAME OVER</h2><h1 id="ow" style="font-size:clamp(34px,6vw,64px)"></h1><p id="oy"></p><table id="ot"></table>
+  <div class="row"><button id="pa" class="red">Play again</button><button id="rl">Return to lobby</button></div><p id="oh"></p>
+</div>
+
+<script src="js/sprites.js"></script>
+<script src="js/vision.js"></script>
+<script src="js/host.js"></script>
+<script src="js/client.js"></script>
+<script src="js/vents.js"></script>
+<script src="js/tasks.js"></script>
+
+</body>
+</html>

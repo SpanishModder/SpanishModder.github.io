@@ -1,0 +1,629 @@
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0a0f1f;
+  color: #e8eefc;
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   PANTALLAS / CONTENEDORES PRINCIPALES
+   ========================================================= */
+
+.full {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 20px;
+  overflow: auto;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      #18264a,
+      #0a0f1f 70%
+    );
+}
+
+.container {
+  box-sizing: content-box;
+  padding: 15px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 12px;
+  background-color: #1a2748;
+
+  border-radius: 14px;
+  border: 3px solid #34508f;
+}
+
+#tw {
+  width: fit-content;
+}
+
+.tm{box-sizing:border-box;width:100%;display:flex;flex-direction:column;align-items:stretch;gap:14px;color:#e8eefc;text-align:center;user-select:none}.tm p{margin:0;color:#9fb2e0;font-size:14px;line-height:1.4;min-height:1.4em}.tm button,.tm input{box-sizing:border-box;padding:10px 16px;font-size:16px;color:#fff;background:#15213f;border:2px solid #34508f;border-radius:14px}.tm button{cursor:pointer;font-weight:700}.tm button:hover:not(:disabled){background:#22377a}.tm button:disabled{opacity:.4;cursor:default}.tm button:active:not(:disabled){transform:scale(.97)}.tm .bar{width:100%;height:16px;overflow:hidden;background:#1a2748;border:2px solid #34508f;border-radius:8px}.tm .fill{display:block;width:0;height:100%;background:linear-gradient(90deg,#3ddc84,#b6f34a)}.tm .hold{width:100%;height:55px;touch-action:none}
+.tm .red{background:#b3243a!important}.tm .blue{background:#2874bd!important}.tm .yellow{background:#b79b19!important;color:#111!important}.tm .green{background:#2f8a4b!important}
+.wires{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px;width:100%}.wire{height:34px!important;padding:0!important;border:0!important;border-radius:20px!important;box-shadow:inset 0 0 0 4px #0c1224}.wire.sel{outline:3px solid #fff;outline-offset:2px}.wire.done{opacity:.35;pointer-events:none}
+.seq{display:grid;grid-template-columns:repeat(var(--c,5),minmax(0,1fr));gap:8px;width:100%}.seq button{height:54px;padding:0;font-size:18px}.seq .bad{animation:sh .3s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pads{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pad{height:80px;padding:0!important;font-size:22px;border-radius:14px!important;color:#fff!important;border-color:#0c1224!important;opacity:.55;transition:.1s}.pad.lit{opacity:1;filter:brightness(1.6);transform:scale(1.04)}
+.target{position:relative;width:100%;height:64px;display:flex;align-items:center}.target:after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:10%;height:46px;border:3px solid #ff5a6e;border-radius:6px;pointer-events:none}.needle{position:absolute;left:0;top:50%;width:6px;height:34px;margin-left:-3px;background:#6fd3ff;border-radius:3px;transform:translateY(-50%)}.range{width:100%;padding:0!important;background:transparent!important;border:0!important;accent-color:#6fd3ff}
+.switch{align-self:center;width:130px;height:70px;border:4px solid #34508f!important;background:#8b2222!important}.switch.on{background:#39a844!important}
+.cal{display:grid;gap:12px;width:100%}.calrow{display:grid;grid-template-columns:24px minmax(0,1fr) 64px;align-items:center;gap:8px;width:100%}.calrow button{padding:8px 0}.trk{position:relative;display:flex;align-items:center;height:36px}.trk:before{content:"";position:absolute;left:var(--z);top:2px;bottom:2px;width:12%;transform:translateX(-50%);border:3px solid #ff5a6e;border-radius:4px;pointer-events:none}
+.rail{position:relative;height:84px;background:#0c1430;border:3px dashed #34508f;border-radius:12px;overflow:hidden}.rail:before{content:"CARD READER  →";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#5f78b8;font-size:13px;letter-spacing:.1em}.idcard{position:absolute;left:6px;top:8px;width:100px;height:62px;display:flex;align-items:center;justify-content:center;background:#b3243a;border:3px solid #0c1224;border-radius:8px;font-weight:700;font-size:13px;cursor:grab;touch-action:none;z-index:1;transition:transform .2s}
+.scan{font-size:56px;margin:5px 0}.scan.on{color:#6fd3ff;animation:pu .8s infinite}@keyframes pu{50%{transform:scale(1.25);opacity:.6}}
+.samples{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%}.sample{height:90px;padding:0!important;background:#28a0a0!important;border:3px solid #34508f!important;border-radius:12px!important}.sample.odd{background:#d0489a!important}
+.asteroids{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%}.aster{height:52px;padding:0!important;border-radius:50%!important;font-size:22px}.trash{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:110px;width:100%}.debris{padding:14px 18px!important;border-radius:50%!important;background:#263a6b!important}
+.shields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%}.shield{height:70px;padding:0!important;border-radius:18px!important;background:#851f1f!important}.shield.on{background:#eee!important;color:#111;pointer-events:none}
+@media(max-width:460px){#tw{width:min(94vw,420px);padding:18px}.wires{gap:10px 20px}.calrow{grid-template-columns:20px minmax(0,1fr) 58px}.samples{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* =========================================================
+   TIPOGRAFÍA
+   ========================================================= */
+
+h1 {
+  margin: 0;
+  margin-left: 10px;
+
+  font-size: clamp(40px, 8vw, 84px);
+  letter-spacing: 0.12em;
+
+  color: #ff5a6e;
+  text-shadow: 0 5px 0 #5a1220;
+}
+
+h2 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: #9fb2e0;
+}
+
+.subtitle {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.div-text {
+  align-self: center;
+  color: white;
+  margin-bottom: -0.3rem;
+}
+
+
+/* =========================================================
+   BOTONES / INPUTS / SELECTS
+   ========================================================= */
+
+button,
+input,
+select {
+  padding: 10px 16px;
+
+  font-size: 16px;
+  color: #fff;
+
+  background: #15213f;
+  border: 2px solid #34508f;
+  border-radius: 14px;
+}
+
+#nm {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover:not(:disabled) {
+  background: #22377a;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.red {
+  background: #b3243a;
+  border-color: #ff5a6e;
+}
+
+.red:hover:not(:disabled) {
+  background: #d12f48;
+}
+
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+}
+
+#err {
+  min-height: 20px;
+  color: #ff8a98;
+}
+
+
+/* =========================================================
+   PANTALLA DE INSTRUCCIONES
+   ========================================================= */
+
+#how {
+  max-width: 520px;
+
+  padding: 16px;
+
+  background: #111a33;
+  border-radius: 16px;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   JUGADORES / LISTAS
+   ========================================================= */
+
+.pc {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 200px;
+  padding: 8px 14px;
+
+  background: #111a33;
+  border-radius: 12px;
+}
+
+.pc i,
+.card i {
+  display: inline-block;
+
+  width: 22px;
+  height: 26px;
+
+  border: 2px solid #0c1224;
+  border-radius: 9px 9px 5px 5px;
+}
+
+#pl {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  );
+
+  gap: 8px;
+
+  width: 100%;
+  max-width: 760px;
+}
+
+
+/* =========================================================
+   CÓDIGOS
+   ========================================================= */
+
+.code {
+  font-size: 34px;
+  letter-spacing: 0.2em;
+  color: #ffd35a;
+}
+
+
+/* =========================================================
+   HUD DEL JUEGO
+   ========================================================= */
+
+#hud {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+}
+
+#hud > * {
+  pointer-events: auto;
+}
+
+#map-container {
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0,0,0, 0.4);
+}
+
+#map-container h2 {
+  margin-top: -3rem;
+  font-size: 300%;
+}
+
+
+/* =========================================================
+   PROGRESO
+   ========================================================= */
+
+#pgw {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  width: min(360px, 50vw);
+
+  padding: 8px 12px;
+
+  background: #0c1430cc;
+  border-radius: 12px;
+}
+
+.bar {
+  height: 16px;
+
+  overflow: hidden;
+
+  background: #1a2748;
+  border: 2px solid #34508f;
+  border-radius: 8px;
+}
+
+.bar i {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #3ddc84,
+    #b6f34a
+  );
+}
+
+#tl {
+  margin-top: 6px;
+
+  color: #c9d6f5;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   TEMPORIZADOR
+   ========================================================= */
+
+#tm {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+
+  color: #9fb2e0;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   MENSAJE / ESTADO DEL JUEGO
+   ========================================================= */
+
+#pr {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 8px 16px;
+
+  background: #000a;
+  border-radius: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ACCIONES
+   ========================================================= */
+
+#act {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  display: flex;
+  gap: 10px;
+
+  border: 0px solid transparent;
+}
+
+#act button {
+  padding: 16px 24px;
+  font-size: 20px;
+  background-color: transparent;
+  border: 0px solid transparent;
+  user-select: none;
+}
+
+button img:hover {
+  opacity: 0.8;
+}
+
+button img:disabled {
+  opacity: 0.4;
+}
+
+#br:disabled {
+  opacity: 0.25;
+}
+
+
+/* =========================================================
+   PANTALLA DE RESULTADO
+   ========================================================= */
+
+#rb {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #050914dd;
+
+  font-size: clamp(28px, 6vw, 64px);
+  font-weight: 900;
+  text-align: center;
+}
+
+.imp {
+  color: #ff5a6e;
+}
+
+.crew {
+  color: #6fd3ff;
+}
+
+
+/* =========================================================
+   TAREAS
+   ========================================================= */
+
+#task {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #050914cc;
+}
+
+#tw {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+
+  width: min(420px, 92vw);
+  padding: 24px;
+
+  background: #111a33;
+  border: 2px solid #34508f;
+  border-radius: 20px;
+
+  text-align: center;
+}
+
+.sq {
+  width: 60px;
+  height: 60px;
+  margin: 4px;
+  padding: 0;
+
+  font-size: 26px;
+}
+
+
+/* =========================================================
+   REUNIÓN / VOTACIÓN
+   ========================================================= */
+
+#meet {
+  justify-content: flex-start;
+}
+
+#mh {
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 800;
+}
+
+#rs {
+  min-height: 10px;
+
+  color: #ffd35a;
+  font-size: clamp(22px, 4vw, 40px);
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   CARTAS / JUGADORES EN VOTACIÓN
+   ========================================================= */
+
+#cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(220px, 1fr)
+  );
+
+  gap: 10px;
+
+  width: min(960px, 100%);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 48px;
+  padding: 10px 14px;
+
+  background: #111a33;
+  border: 2px solid #263a6b;
+  border-radius: 14px;
+
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: #6fd3ff;
+}
+
+.card.sel {
+  background: #2a2a14;
+  border-color: #ffd35a;
+}
+
+.card.dead {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.card em {
+  margin-left: auto;
+
+  color: #7ee2a4;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.card b {
+  margin-left: auto;
+  font-size: 20px;
+}
+
+.card u {
+  display: inline-block;
+
+  width: 10px;
+  height: 10px;
+  margin-left: 2px;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+#chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: min(960px, 100%);
+  min-height: 150px;
+
+  flex: 1;
+}
+
+#log {
+  flex: 1;
+
+  min-height: 100px;
+  max-height: 30vh;
+
+  overflow: auto;
+
+  padding: 10px;
+
+  background: #0c1430;
+  border-radius: 14px;
+
+  font-size: 14px;
+}
+
+#log div {
+  margin: 2px 0;
+}
+
+#log .gh {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   TABLAS
+   ========================================================= */
+
+table {
+  min-width: min(620px, 95vw);
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 8px 14px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #263a6b;
+}
+
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
+#cv {
+  position: fixed;
+  inset: 0;
+}
