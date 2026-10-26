@@ -167,7 +167,15 @@ function hostGame(name) {
     } catch (e) {}
   }
 
-  peer = new Peer(ID(code));
+  peer = peer = new Peer(ID(code), {
+    config: {
+        'iceServers': [
+            { url: 'stun:://google.com' },
+            { url: 'stun:://google.com' },
+            { url: 'stun:://google.com' }
+        ]
+    }
+  });
 
   peer.on("error", e => {
     if (e.type === "unavailable-id") {
@@ -246,7 +254,15 @@ function joinGame(code, then) {
     } catch (e) {}
   }
 
-  peer = new Peer();
+  peer = new Peer({
+    config: {
+      'iceServers': [
+        { url: 'stun:://google.com' },
+        { url: 'stun:://google.com' },
+        { url: 'stun:://google.com' }
+      ]
+    }
+  });
 
   peer.on("error", e => {
     err(
