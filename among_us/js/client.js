@@ -167,12 +167,12 @@ function hostGame(name) {
     } catch (e) {}
   }
 
-  peer = peer = new Peer(ID(code), {
+  peer = new Peer(ID(code), {
     config: {
         'iceServers': [
-            { url: 'stun:://google.com' },
-            { url: 'stun:://google.com' },
-            { url: 'stun:://google.com' }
+            { urls: 'stun:://google.com' },
+            { urls: 'stun:://google.com' },
+            { urls: 'stun:://google.com' }
         ]
     }
   });
@@ -256,11 +256,11 @@ function joinGame(code, then) {
 
   peer = new Peer({
     config: {
-      'iceServers': [
-        { url: 'stun:://google.com' },
-        { url: 'stun:://google.com' },
-        { url: 'stun:://google.com' }
-      ]
+        'iceServers': [
+            { urls: 'stun:://google.com' },
+            { urls: 'stun:://google.com' },
+            { urls: 'stun:://google.com' }
+        ]
     }
   });
 
