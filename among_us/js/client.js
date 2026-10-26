@@ -245,8 +245,12 @@ function hostGame(name) {
    UNIRSE A UNA PARTIDA
    ========================================================= */
 
+
 function joinGame(code, then) {
-  room = code;
+  room = String(code).trim().toUpperCase();
+
+  console.log("[JOIN] Starting. Room:", room);
+  console.log("[JOIN] Target ID:", ID(room));
 
   if (peer) {
     try {
@@ -254,28 +258,43 @@ function joinGame(code, then) {
     } catch (e) {}
   }
 
+  let finished = false;
+  let connectionTimer;
+  let responseTimer;
+
+  const cleanup = () => {
+    clearTimeout(connectionTimer);
+    clearTimeout(responseTimer);
+  };
+
+  const fail = message => {
+    if (finished) return;
+
+    finished = true;
+    cleanup();
+
+    console.error("[JOIN] FAILED:", message);
+    err(message);
+  };
+
   peer = new Peer();
 
-  peer.on("error", e => {
-    err(
-      e.type === "peer-unavailable"
-        ? "Room not found. Is the host still online?"
-        : "Connection error (" + e.type + ")."
-    );
+  connectionTimer = setTimeout(() => {
+    fail("Connection timed out: PeerJS could not open the connection.");
+  }, 15000);
 
-    lost();
-  });
+  peer.on("open", id => {
+    console.log("[JOIN] My PeerJS ID:", id);
+    console.log("[JOIN] Connecting to host...");
 
-  peer.on("open", () => {
-    conn = peer.connect(
-      ID(room),
-      {
-        reliable: true
-      }
-    );
+    conn = peer.connect(ID(room), { reliable: true });
 
     conn.on("open", () => {
-      err("");
+      if (finished) return;
+
+      clearTimeout(connectionTimer);
+
+      console.log("[JOIN] Data connection OPEN");
 
       ws = {
         readyState: 1,
@@ -283,14 +302,61 @@ function joinGame(code, then) {
       };
 
       tries = 0;
-      then();
+
+      // The host should respond after receiving the join message.
+      responseTimer = setTimeout(() => {
+        fail("Connected to host, but no response was received.");
+      }, 10000);
+
+      try {
+        then();
+      } catch (e) {
+        console.error("[JOIN] Error sending initial message:", e);
+        fail("Could not send the join message.");
+      }
     });
 
     conn.on("data", d => {
-      onmsg({ data: d });
+      console.log("[JOIN] Received data:", d);
+
+      clearTimeout(responseTimer);
+
+      try {
+        onmsg({ data: d });
+      } catch (e) {
+        console.error("[JOIN] Error processing server message:", e);
+        fail("Error processing the host response. Check the console.");
+      }
     });
 
-    conn.on("close", lost);
+    conn.on("error", e => {
+      console.error("[JOIN] Connection error:", e);
+      fail("PeerJS data connection failed.");
+    });
+
+    conn.on("close", () => {
+      console.warn("[JOIN] Connection closed");
+
+      if (!finished) {
+        fail("The connection to the host was closed.");
+      } else {
+        lost();
+      }
+    });
+  });
+
+  peer.on("error", e => {
+    console.error("[JOIN] PeerJS error:", e.type, e);
+
+    fail(
+      e.type === "peer-unavailable"
+        ? "Room not found. Check whether the host is online."
+        : "PeerJS error: " + e.type
+    );
+  });
+
+  peer.on("disconnected", () => {
+    console.warn("[JOIN] Disconnected from the PeerJS signaling server");
   });
 }
 
